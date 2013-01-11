@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="Orange.WinRT.SampleApp.Views.ScrollIndicatorExamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Orange.WinRT.SampleApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:orangeControls="using:OrangeWinRT.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="100,100,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button x:Name="PrevButton" Content="prev"/>
+            <ScrollViewer x:Name="PrevNextScrollViewer"
+                            Width="175" 
+                            HorizontalScrollBarVisibility="Auto" 
+            	            VerticalScrollBarVisibility="Disabled" 
+                            VerticalScrollMode="Disabled" Margin="69,0,-69,0" >
+                <StackPanel Orientation="Horizontal" Background="#FFAAAAAA">
+                    <Button Content="Button1"/>
+                    <Button Content="Button2"/>
+                    <Button Content="Button3"/>
+                    <Button Content="Button4"/>
+                    <Button Content="Button5"/>
+                </StackPanel>
+            </ScrollViewer>
+            <Button x:Name="NextButton" Content="next" Margin="249,0,-137,0"/>
+            <orangeControls:ScrollIndicator 
+                ScrollViewer="{Binding ElementName=PrevNextScrollViewer}"
+                PrevButton="{Binding ElementName=PrevButton}"
+                NextButton="{Binding ElementName=NextButton}"/>
+        </Grid>
+
+    </Grid>
+</Page>

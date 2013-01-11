@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="79dc23c5-5a49-4edd-a613-d3208c146868" Publisher="CN=MS004" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>OrangeWinRT.SampleApp</DisplayName>
+    <PublisherDisplayName>MS004</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="OrangeWinRT.SampleApp.App">
+      <VisualElements DisplayName="OrangeWinRT.SampleApp" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="OrangeWinRT.SampleApp" ForegroundText="light" BackgroundColor="#464646">
+        <DefaultTile ShowName="allLogos" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
