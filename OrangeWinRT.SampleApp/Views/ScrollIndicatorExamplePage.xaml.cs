@@ -11,6 +11,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Collections.ObjectModel;
+
+using OrangeWinRT.SampleApp.DataModel;
+
 
 // 空白ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
 
@@ -26,13 +30,20 @@ namespace OrangeWinRT.SampleApp.Views
             this.InitializeComponent();
         }
 
-        /// <summary>
-        /// このページがフレームに表示されるときに呼び出されます。
-        /// </summary>
-        /// <param name="e">このページにどのように到達したかを説明するイベント データ。Parameter 
-        /// プロパティは、通常、ページを構成するために使用します。</param>
+        public class Group : OrangeWinRT.SampleApp.Common.BindableBase
+        {
+            public ObservableCollection<object> Items;
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            var groups = SampleDataSource.GetGroups("AllGroups");
+            var source = new CollectionViewSource();
+            source.Source = groups;
+            source.IsSourceGrouped = true;
+            source.ItemsPath = new PropertyPath("TopItems");
+            this.GrieView1.DataContext = source;
         }
+
     }
 }
