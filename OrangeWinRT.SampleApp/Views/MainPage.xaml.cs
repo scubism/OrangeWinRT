@@ -14,12 +14,12 @@ using Windows.UI.Xaml.Navigation;
 
 // 基本ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234237 を参照してください
 
-namespace Orange.WinRT.SampleApp.Views
+namespace OrangeWinRT.SampleApp.Views
 {
     /// <summary>
     /// 多くのアプリケーションに共通の特性を指定する基本ページ。
     /// </summary>
-    public sealed partial class MainPage : Orange.WinRT.SampleApp.Common.LayoutAwarePage
+    public sealed partial class MainPage : OrangeWinRT.SampleApp.Common.LayoutAwarePage
     {
         public MainPage()
         {

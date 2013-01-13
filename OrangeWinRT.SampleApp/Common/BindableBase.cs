@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI.Xaml.Data;
 
-namespace Orange.WinRT.SampleApp.Common
+namespace OrangeWinRT.SampleApp.Common
 {
     /// <summary>
     /// モデルを簡略化するための <see cref="INotifyPropertyChanged"/> の実装。

@@ -1,4 +1,4 @@
-﻿using Orange.WinRT.SampleApp.Common;
+﻿using OrangeWinRT.SampleApp.Common;
 
 using System;
 using System.Collections.Generic;
@@ -16,11 +16,11 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using Orange.WinRT.SampleApp.Views;
+using OrangeWinRT.SampleApp.Views;
 
 // グリッド アプリケーション テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234226 を参照してください
 
-namespace Orange.WinRT.SampleApp
+namespace OrangeWinRT.SampleApp
 {
     /// <summary>
     /// 既定の Application クラスを補完するアプリケーション固有の動作を提供します。

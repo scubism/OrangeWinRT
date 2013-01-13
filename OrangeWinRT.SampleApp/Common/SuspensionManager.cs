@@ -11,7 +11,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Orange.WinRT.SampleApp.Common
+namespace OrangeWinRT.SampleApp.Common
 {
     /// <summary>
     /// SuspensionManager は、グローバル セッション状態をキャプチャし、アプリケーションのプロセス継続時間管理を簡略化します。

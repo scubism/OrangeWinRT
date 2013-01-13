@@ -1,11 +1,11 @@
 ﻿<common:LayoutAwarePage
     x:Name="pageRoot"
-    x:Class="Orange.WinRT.SampleApp.Views.MainPage"
+    x:Class="OrangeWinRT.SampleApp.Views.MainPage"
     DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Orange.WinRT.SampleApp.Views"
-    xmlns:common="using:Orange.WinRT.SampleApp.Common"
+    xmlns:local="using:OrangeWinRT.SampleApp.Views"
+    xmlns:common="using:OrangeWinRT.SampleApp.Common"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -13,7 +13,7 @@
     <Page.Resources>
 
         <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
-        <x:String x:Key="AppName">Orange.WinRT</x:String>
+        <x:String x:Key="AppName">OrangeWinRT</x:String>
     </Page.Resources>
 
     <!--

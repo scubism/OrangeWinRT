@@ -11,7 +11,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
 
-namespace Orange.WinRT.SampleApp.Common
+namespace OrangeWinRT.SampleApp.Common
 {
     /// <summary>
     /// true を <see cref="Visibility.Visible"/> に、および false を 

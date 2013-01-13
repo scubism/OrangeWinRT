@@ -11,7 +11,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace Orange.WinRT.SampleApp.Common
+namespace OrangeWinRT.SampleApp.Common
 {
     /// <summary>
     /// Page を一般的な方法で実装すると、重要かつ便利な機能をいくつか使用できます:
