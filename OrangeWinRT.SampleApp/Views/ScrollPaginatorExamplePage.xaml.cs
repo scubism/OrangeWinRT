@@ -15,14 +15,8 @@ using System.Collections.ObjectModel;
 
 using OrangeWinRT.SampleApp.DataModel;
 
-
-// 空白ページのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234238 を参照してください
-
 namespace OrangeWinRT.SampleApp.Views
 {
-    /// <summary>
-    /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
-    /// </summary>
     public sealed partial class ScrollPaginatorExamplePage : Page
     {
         public ScrollPaginatorExamplePage()
@@ -50,7 +44,7 @@ namespace OrangeWinRT.SampleApp.Views
 
         private void GrieView1_Loaded(object sender, RoutedEventArgs e)
         {
-            // NOTE: cannot use VirtualizingStackPanel with pagination ..
+            // NOTE: cannot use VirtualizingStackPanel with pagination..
             var elem = VisualTreeHelper.GetChild(sender as DependencyObject, 0);
             this.GridView1ScrollPaginator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
         }

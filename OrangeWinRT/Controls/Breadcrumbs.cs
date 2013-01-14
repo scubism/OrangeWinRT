@@ -9,8 +9,6 @@ using Windows.UI.Xaml.Documents;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
-// テンプレート コントロールのアイテム テンプレートについては、http://go.microsoft.com/fwlink/?LinkId=234235 を参照してください
-
 namespace OrangeWinRT.Controls
 {
     [TemplatePart(Name = ITEMS_CONTROL_PARTNAME, Type = typeof(ItemsControl))]

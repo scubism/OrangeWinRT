@@ -12,19 +12,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Collections.Specialized;
 
-// このファイルで定義されるデータ モデルは、メンバーが追加、削除、または変更されるときの通知をサポートする、
-// 厳密に型指定されたモデルの代表的な例として機能します。選択された
-// プロパティ名は標準の項目テンプレートのデータ バインドと一致します。
-//
-// アプリケーションでは、このモデルを開始位置として使用してこのモデル上でビルドするか、完全に破棄して
-// 必要に応じて置き換えることがあります。
-
 namespace OrangeWinRT.SampleApp.DataModel
 {
-    /// <summary>
-    /// <see cref="SampleDataItem"/> および <see cref="SampleDataGroup"/> の基本クラスでは、
-    /// 両方に共通するプロパティを定義します。
-    /// </summary>
+
     [Windows.Foundation.Metadata.WebHostHidden]
     public abstract class SampleDataCommon : OrangeWinRT.SampleApp.Common.BindableBase
     {
@@ -100,9 +90,6 @@ namespace OrangeWinRT.SampleApp.DataModel
         }
     }
 
-    /// <summary>
-    /// 汎用項目データ モデル。
-    /// </summary>
     public class SampleDataItem : SampleDataCommon
     {
         public SampleDataItem(String uniqueId, String title, String subtitle, String imagePath, String description, String content, SampleDataGroup group)
@@ -127,9 +114,6 @@ namespace OrangeWinRT.SampleApp.DataModel
         }
     }
 
-    /// <summary>
-    /// 汎用グループ データ モデル。
-    /// </summary>
     public class SampleDataGroup : SampleDataCommon
     {
         public SampleDataGroup(String uniqueId, String title, String subtitle, String imagePath, String description)
@@ -140,14 +124,6 @@ namespace OrangeWinRT.SampleApp.DataModel
 
         private void ItemsCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            // バインドする完全な項目コレクションのサブセットを GroupedItemsPage から指定します。
-            // これには次の 2 つの理由があります。GridView はサイズの大きい項目コレクションを仮想化しません。また、
-            // グループを通じてたくさんのアイテムを参照するときに、ユーザー エクスペリエンスを
-            // 向上します。
-            //
-            // 1、2、3、4、または 6 個の列が表示される場合でも、入力済みのグリッド コラムが使用されることになるため、
-            // 最大 12 個のアイテムが表示されます
-
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
@@ -215,12 +191,6 @@ namespace OrangeWinRT.SampleApp.DataModel
         }
     }
 
-    /// <summary>
-    /// ハードコーディングされたコンテンツを使用して、グループおよびアイテムのコレクションを作成します。
-    /// 
-    /// SampleDataSource はライブ プロダクション データではなくプレースホルダー データを使用して初期化するので
-    /// サンプル データは設計時と実行時の両方に用意されています。
-    /// </summary>
     public sealed class SampleDataSource
     {
         private static SampleDataSource _sampleDataSource = new SampleDataSource();
@@ -240,7 +210,6 @@ namespace OrangeWinRT.SampleApp.DataModel
 
         public static SampleDataGroup GetGroup(string uniqueId)
         {
-            // サイズの小さいデータ セットでは単純な一方向の検索を実行できます
             var matches = _sampleDataSource.AllGroups.Where((group) => group.UniqueId.Equals(uniqueId));
             if (matches.Count() == 1) return matches.First();
             return null;
@@ -248,7 +217,6 @@ namespace OrangeWinRT.SampleApp.DataModel
 
         public static SampleDataItem GetItem(string uniqueId)
         {
-            // サイズの小さいデータ セットでは単純な一方向の検索を実行できます
             var matches = _sampleDataSource.AllGroups.SelectMany(group => group.Items).Where((item) => item.UniqueId.Equals(uniqueId));
             if (matches.Count() == 1) return matches.First();
             return null;
