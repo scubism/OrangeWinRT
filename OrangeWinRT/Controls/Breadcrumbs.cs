@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Media;
 namespace OrangeWinRT.Controls
 {
     [TemplatePart(Name = ITEMS_CONTROL_PARTNAME, Type = typeof(ItemsControl))]
-    
     public sealed class Breadcrumbs : Control
     {
         #region Template Parts
@@ -34,7 +33,6 @@ namespace OrangeWinRT.Controls
 
         private void _populateItems()
         {
-
             var breadcrumbsSource = this.BreadcrumbsSource as IList<object>;
             if (breadcrumbsSource == null ||
                 this._itemsControl == null ||
@@ -61,6 +59,7 @@ namespace OrangeWinRT.Controls
                 separatorElement.DataContext = breadcrumbsSource[i];
                 items.Add(separatorElement);
             }
+
             FrameworkElement terminalBreadcrumbElement;
             if (this.TerminalBreadcrumbTemplate != null)
             {
@@ -74,7 +73,6 @@ namespace OrangeWinRT.Controls
             items.Add(terminalBreadcrumbElement);
 
             this._itemsControl.ItemsSource = items;
-            
         }
 
         #region BreadcrumbsSource
@@ -91,8 +89,7 @@ namespace OrangeWinRT.Controls
 
         private static void OnBreadcrumbsSourcePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var breadcrumbs = d as Breadcrumbs;
-            breadcrumbs._populateItems();
+            ((Breadcrumbs)d)._populateItems();
         }
         #endregion
 
@@ -128,7 +125,5 @@ namespace OrangeWinRT.Controls
         public static readonly DependencyProperty SeparatorTemplateProperty = DependencyProperty.Register("SeparatorTemplate",
             typeof(DataTemplate), typeof(Breadcrumbs), null);
         #endregion
-
     }
-
 }
