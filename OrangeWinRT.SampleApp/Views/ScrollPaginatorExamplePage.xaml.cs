@@ -23,9 +23,9 @@ namespace OrangeWinRT.SampleApp.Views
     /// <summary>
     /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
     /// </summary>
-    public sealed partial class ScrollIndicatorExamplePage : Page
+    public sealed partial class ScrollPaginatorExamplePage : Page
     {
-        public ScrollIndicatorExamplePage()
+        public ScrollPaginatorExamplePage()
         {
             this.InitializeComponent();
         }
@@ -52,19 +52,19 @@ namespace OrangeWinRT.SampleApp.Views
         {
             // NOTE: cannot use VirtualizingStackPanel with pagination ..
             var elem = VisualTreeHelper.GetChild(sender as DependencyObject, 0);
-            this.GridView1ScrollIndicator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
+            this.GridView1ScrollPaginator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
         }
 
         private void ListView1_Loaded(object sender, RoutedEventArgs e)
         {
             var elem = VisualTreeHelper.GetChild(sender as DependencyObject, 0);
-            this.ListView1ScrollIndicator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
+            this.ListView1ScrollPaginator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
         }
 
         private void ListView2_Loaded(object sender, RoutedEventArgs e)
         {
             var elem = VisualTreeHelper.GetChild(sender as DependencyObject, 0);
-            this.ListView2ScrollIndicator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
+            this.ListView2ScrollPaginator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
         }
 
     }

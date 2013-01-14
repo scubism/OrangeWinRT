@@ -49,9 +49,9 @@ namespace OrangeWinRT.SampleApp.Views
         {
         }
 
-        private void ScrollIndicatorButton_Click_1(object sender, RoutedEventArgs e)
+        private void ScrollPaginatorButton_Click_1(object sender, RoutedEventArgs e)
         {
-            NavFrame.Navigate(typeof(ScrollIndicatorExamplePage));
+            NavFrame.Navigate(typeof(ScrollPaginatorExamplePage));
         }
     }
 }

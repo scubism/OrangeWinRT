@@ -17,7 +17,7 @@ namespace OrangeWinRT.Controls
     [TemplatePart(Name = PREV_BUTTON_PARTNAME, Type = typeof(Button))]
     [TemplatePart(Name = NEXT_BUTTON_PARTNAME, Type = typeof(Button))]
     [TemplatePart(Name = SLIDER_PARTNAME, Type = typeof(Slider))]
-    public sealed class ScrollIndicator : Control
+    public sealed class ScrollPaginator : Control
     {
         const double PAGE_SEPARATION_ALLOWANCE = 0.05;
         const double SIGNIFICANT_DIGITS = 1000;
@@ -32,9 +32,9 @@ namespace OrangeWinRT.Controls
         const string SLIDER_PARTNAME = "Slider";
         #endregion
 
-        public ScrollIndicator()
+        public ScrollPaginator()
         {
-            this.DefaultStyleKey = typeof(ScrollIndicator);
+            this.DefaultStyleKey = typeof(ScrollPaginator);
         }
 
         protected override void OnApplyTemplate()
@@ -95,10 +95,10 @@ namespace OrangeWinRT.Controls
         public static readonly DependencyProperty ScrollViewerProperty =
             DependencyProperty.Register("ScrollViewer",
                         typeof(ScrollViewer),
-                        typeof(ScrollIndicator),
+                        typeof(ScrollPaginator),
                         new PropertyMetadata(null, (depobj, args) =>
                         {
-                            ScrollIndicator indicator = (ScrollIndicator)depobj;
+                            ScrollPaginator indicator = (ScrollPaginator)depobj;
                             ScrollViewer scrollViewer = (ScrollViewer)args.NewValue;
 
                             indicator.resetLayoutMetrics();
@@ -127,7 +127,7 @@ namespace OrangeWinRT.Controls
 
         public static readonly DependencyProperty NumPagesProperty = DependencyProperty.Register("NumPages",
             typeof(int),
-            typeof(ScrollIndicator),
+            typeof(ScrollPaginator),
             new PropertyMetadata(null, null));
         #endregion
 
@@ -140,7 +140,7 @@ namespace OrangeWinRT.Controls
 
         public static readonly DependencyProperty PageIndexProperty = DependencyProperty.Register("PageIndex",
             typeof(int),
-            typeof(ScrollIndicator),
+            typeof(ScrollPaginator),
             new PropertyMetadata(null, null));
         #endregion
 

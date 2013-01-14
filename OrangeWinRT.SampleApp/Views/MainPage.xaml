@@ -47,7 +47,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Canvas.ZIndex="2" Margin="20,0,0,0">
-                <Button x:Name="ScrollIndicatorButton" Click="ScrollIndicatorButton_Click_1">Scroll Indicator</Button>
+                <Button x:Name="ScrollPaginatorButton" Click="ScrollPaginatorButton_Click_1">Scroll Paginator</Button>
             </StackPanel>
 
             <Frame x:Name="NavFrame" Grid.Column="1" />
