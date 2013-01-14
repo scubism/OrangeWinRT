@@ -16,14 +16,20 @@ namespace OrangeWinRT.Controls
 {
     [TemplatePart(Name = PREV_BUTTON_PARTNAME, Type = typeof(Button))]
     [TemplatePart(Name = NEXT_BUTTON_PARTNAME, Type = typeof(Button))]
+    [TemplatePart(Name = SLIDER_PARTNAME, Type = typeof(Slider))]
     public sealed class ScrollIndicator : Control
     {
+        const double PAGE_SEPARATION_ALLOWANCE = 0.05;
+        const double SIGNIFICANT_DIGITS = 1000;
+
         #region Template Parts
         private Button _prevButton;
         private Button _nextButton;
+        private Slider _slider;
 
         const string PREV_BUTTON_PARTNAME = "PrevButton";
         const string NEXT_BUTTON_PARTNAME = "NextButton";
+        const string SLIDER_PARTNAME = "Slider";
         #endregion
 
         public ScrollIndicator()
@@ -40,7 +46,10 @@ namespace OrangeWinRT.Controls
                 this._prevButton.Click += (_s, _e) =>
                 {
                     if (this.ScrollViewer == null) { return; }
-                    this.ScrollToPrev();
+                    int newPageIndex = this.PageIndex - 1;
+                    if (newPageIndex > 0){
+                        this.ScrollToPageIndex(newPageIndex, isAnimation: true);
+                    }
                 };
             }
 
@@ -50,7 +59,26 @@ namespace OrangeWinRT.Controls
                 this._nextButton.Click += (_s, _e) =>
                 {
                     if (this.ScrollViewer == null) { return; }
-                    this.ScrollToNext();
+                    int newPageIndex = this.PageIndex + 1;
+                    if (newPageIndex <= this.NumPages)
+                    {
+                        this.ScrollToPageIndex(newPageIndex, isAnimation: true);
+                    }
+                };
+            }
+
+            this._slider = GetTemplateChild("Slider") as Slider;
+            if (this._slider != null)
+            {
+                this._slider.ValueChanged += (_s, _e) =>
+                {
+                    if (this._slider == null || (
+                            this.NumPages == this._slider.Maximum &&
+                            this.PageIndex == this._slider.Value))
+                    {
+                        return;
+                    }
+                    this.ScrollToPageIndex((int)this._slider.Value, isAnimation:false);
                 };
             }
             
@@ -73,61 +101,49 @@ namespace OrangeWinRT.Controls
                             ScrollIndicator indicator = (ScrollIndicator)depobj;
                             ScrollViewer scrollViewer = (ScrollViewer)args.NewValue;
 
+                            indicator.resetLayoutMetrics();
+
+                            scrollViewer.SizeChanged += (s, e) =>
+                            {
+                                indicator.resetLayoutMetrics();
+                                indicator.OnScrollViewerUpdated();
+                            };
+
                             scrollViewer.LayoutUpdated += (s, e) =>
                             {
                                 indicator.OnScrollViewerUpdated();
                             };
+
                             indicator.OnScrollViewerUpdated();
                         }));
         #endregion
 
-        #region Slider
-        public Slider Slider
+        #region NumPages
+        public int NumPages
         {
-            get { return (Slider)GetValue(SliderProperty); }
-            set { SetValue(SliderProperty, value); }
+            get { return (int)GetValue(NumPagesProperty); }
+            set { SetValue(NumPagesProperty, value); }
         }
 
-        public static DependencyProperty SliderProperty =
-            DependencyProperty.Register("Slider",
-                        typeof(Slider),
-                        typeof(ScrollIndicator),
-                        new PropertyMetadata(null, OnSliderPropertyChanged));
-
-        private static void OnSliderPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var indicator = (ScrollIndicator)d;
-            indicator.Slider.ValueChanged += (_s, _e) =>
-            {
-                if (indicator.ScrollViewer == null || (
-                        indicator.NumPages == indicator.Slider.Maximum &&
-                        indicator.PageIndex == indicator.Slider.Value))
-                {
-                    return;
-                }
-                indicator.ScrollToPageIndex((int)indicator.Slider.Value);
-            };
-        }
+        public static readonly DependencyProperty NumPagesProperty = DependencyProperty.Register("NumPages",
+            typeof(int),
+            typeof(ScrollIndicator),
+            new PropertyMetadata(null, null));
         #endregion
 
-        #region TextBlock
-        public TextBlock TextBlock
+        #region PageIndex
+        public int PageIndex
         {
-            get { return (TextBlock)GetValue(TextBlockProperty); }
-            set { SetValue(TextBlockProperty, value); }
+            get { return (int)GetValue(PageIndexProperty); }
+            set { SetValue(PageIndexProperty, value); }
         }
 
-        public static DependencyProperty TextBlockProperty =
-            DependencyProperty.Register("TextBlock",
-                        typeof(TextBlock),
-                        typeof(ScrollIndicator),
-                        new PropertyMetadata(null, null));
+        public static readonly DependencyProperty PageIndexProperty = DependencyProperty.Register("PageIndex",
+            typeof(int),
+            typeof(ScrollIndicator),
+            new PropertyMetadata(null, null));
         #endregion
 
-        public int NumPages;
-        public int PageIndex;
-
-        private double _lastSize;
         private double _lastExtentSize;
         private double _lastOffset = -1;
         private double _startOffset = 0; // need for grid view?
@@ -136,6 +152,13 @@ namespace OrangeWinRT.Controls
         private double _offset;
 
         private Orientation _orientation;
+
+        public void resetLayoutMetrics()
+        {
+            this._lastOffset = -1;
+            this._startOffset = 0;
+            this._size = -1;
+        }
 
         private void _updateLayoutMetrics()
         {
@@ -150,15 +173,26 @@ namespace OrangeWinRT.Controls
 
             if (this._orientation == Orientation.Horizontal)
             {
-                this._size = this.ScrollViewer.ViewportWidth;
+                if (this._size < 0)
+                {
+                    this._size = this.ScrollViewer.ViewportWidth;
+                }
                 this._extentSize = this.ScrollViewer.ExtentWidth;
                 this._offset = this.ScrollViewer.HorizontalOffset;
             }
             else
             {
-                this._size = this.ScrollViewer.ViewportHeight;
+                if (this._size < 0)
+                {
+                    this._size = this.ScrollViewer.ViewportHeight;
+                }
                 this._extentSize = this.ScrollViewer.ExtentHeight;
                 this._offset = this.ScrollViewer.VerticalOffset;
+            }
+
+            if (this._lastOffset < 0)
+            {
+                this._startOffset = this._offset;
             }
         }
 
@@ -166,52 +200,39 @@ namespace OrangeWinRT.Controls
         {
             this._updateLayoutMetrics();
             double size = this._size;
+            if (size < 0) { return; }
+
             double extentSize = this._extentSize;
             double offset = this._offset;
 
-            if (size == this._lastSize && extentSize == this._lastExtentSize && offset == this._lastOffset)
+            if (extentSize == this._lastExtentSize && offset == this._lastOffset)
             {
                 return;
             }
-            this._lastSize = size;
             this._lastExtentSize = extentSize;
-
-            if (this._lastOffset < 0)
-            {
-                this._startOffset = offset;
-            }
             this._lastOffset = offset;
+
             if (this._startOffset > 0)
             {
                 offset -= this._startOffset;
                 extentSize -= this._startOffset;
             }
 
-            int numPages = (int)Math.Round(extentSize / size);
-            if (extentSize - numPages * size > 0.1 * size)
+            int numPages = (int)Math.Ceiling((int)(SIGNIFICANT_DIGITS * extentSize / size) / SIGNIFICANT_DIGITS);
+            if (extentSize - numPages * size > PAGE_SEPARATION_ALLOWANCE * size)
             {
-                numPages += 1;
+                this.NumPages = numPages + 1;
             }
-            this.NumPages = numPages;
+            else
+            {
+                this.NumPages = numPages;
+            }
 
-            int pageIndex = (int)Math.Round((offset + size) / size);
-            if (offset + size - numPages * size > 0.1 * size)
-            {
-                pageIndex += 1;
-            }
-            this.PageIndex = pageIndex;
-
-            
-            if (this._size <= 0) { return; }
-            if (this._startOffset > 0)
-            {
-                offset -= this._startOffset;
-                extentSize -= this._startOffset;
-            }
+            this.PageIndex = (int)Math.Ceiling((int)(SIGNIFICANT_DIGITS * (offset + size) / size) / SIGNIFICANT_DIGITS);
 
             if (this._prevButton != null && this._nextButton != null)
             {
-                if (offset < 0.1 * size)
+                if (this.PageIndex <= 1)
                 {
                     this._prevButton.Visibility = Visibility.Collapsed;
                 }
@@ -220,7 +241,7 @@ namespace OrangeWinRT.Controls
                     this._prevButton.Visibility = Visibility.Visible;
                 }
 
-                if (offset > extentSize - 1.1 * size)
+                if (this.PageIndex >= this.NumPages)
                 {
                     this._nextButton.Visibility = Visibility.Collapsed;
                 }
@@ -230,45 +251,47 @@ namespace OrangeWinRT.Controls
                 }
             }
 
-            if (this.Slider != null)
+            if (this._slider != null)
             {
-                if (numPages <= 1)
-                {
-                    this.Slider.Visibility = Visibility.Collapsed;
-                }
-                else
-                {
-                    this.Slider.Visibility = Visibility.Visible;
-                    this.Slider.Maximum = this.NumPages;
-                    this.Slider.Minimum = 1;
-                    this.Slider.Value = this.PageIndex;
-                }
-            }
-
-            if (this.TextBlock != null)
-            {
+               
                 if (this.NumPages <= 1)
                 {
-                    this.TextBlock.Text = "";
+                    this._slider.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
-                    // TODO enable format setting
-                    this.TextBlock.Text = String.Format("{0}/{1}", this.PageIndex, this.NumPages);
+                    this._slider.Visibility = Visibility.Visible;
+                    this._slider.Maximum = this.NumPages;
+                    this._slider.Minimum = 1;
+                    this._slider.Value = this.PageIndex;
                 }
             }
         }
 
-        public void ScrollToPageIndex(int pageIndex)
+        public async void ScrollToPageIndex(int pageIndex, bool isAnimation = false)
         {
             double newOffset = (pageIndex - 1) * this._size + this._startOffset;
             if (this._orientation == Orientation.Horizontal)
             {
-                this.ScrollViewer.ScrollToHorizontalOffset(newOffset);
+                if (isAnimation)
+                {
+                    await this.ScrollViewer.ScrollToHorizontalOffsetWithAnimation(newOffset, 0.5);
+                }
+                else
+                {
+                    this.ScrollViewer.ScrollToHorizontalOffset(newOffset);
+                }
             }
             else
             {
-                this.ScrollViewer.ScrollToVerticalOffset(newOffset);
+                if (isAnimation)
+                {
+                    await this.ScrollViewer.ScrollToVerticalOffsetWithAnimation(newOffset, 0.5);
+                }
+                else
+                {
+                    this.ScrollViewer.ScrollToVerticalOffset(newOffset);
+                }
             }
         }
 
@@ -283,32 +306,6 @@ namespace OrangeWinRT.Controls
                 await this.ScrollViewer.ScrollToVerticalOffsetWithAnimation(offset, 0.5);
             }
         }
-
-        public void ScrollToPrev()
-        {
-            this._updateLayoutMetrics();
-            double newOffset = this._offset - this._size;
-            if (newOffset < this._startOffset)
-            {
-                newOffset = this._startOffset;
-            }
-            // ! Extend ScrollViewer to implemnt ScrollToHorizontalOffsetWithAnimation method
-            this._scrollToOffset(newOffset);
-        }
-
-        public void ScrollToNext()
-        {
-            this._updateLayoutMetrics();
-            double newOffset = this._offset + this._size;
-            if (newOffset > this._extentSize - this._size &&
-                    this._extentSize > this._size)
-            {
-                newOffset = this._extentSize - this._size;
-            }
-            // ! Extend ScrollViewer to implemnt ScrollToHorizontalOffsetWithAnimation method
-            this._scrollToOffset(newOffset);
-        }
-
     }
 }
 

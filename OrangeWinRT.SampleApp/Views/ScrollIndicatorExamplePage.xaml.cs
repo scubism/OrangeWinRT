@@ -43,6 +43,28 @@ namespace OrangeWinRT.SampleApp.Views
             source.IsSourceGrouped = true;
             source.ItemsPath = new PropertyPath("TopItems");
             this.GrieView1.DataContext = source;
+
+            this.ListView1.DataContext = groups.First().TopItems;
+            this.ListView2.DataContext = groups.First().TopItems;
+        }
+
+        private void GrieView1_Loaded(object sender, RoutedEventArgs e)
+        {
+            // NOTE: cannot use VirtualizingStackPanel with pagination ..
+            var elem = VisualTreeHelper.GetChild(sender as DependencyObject, 0);
+            this.GridView1ScrollIndicator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
+        }
+
+        private void ListView1_Loaded(object sender, RoutedEventArgs e)
+        {
+            var elem = VisualTreeHelper.GetChild(sender as DependencyObject, 0);
+            this.ListView1ScrollIndicator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
+        }
+
+        private void ListView2_Loaded(object sender, RoutedEventArgs e)
+        {
+            var elem = VisualTreeHelper.GetChild(sender as DependencyObject, 0);
+            this.ListView2ScrollIndicator.ScrollViewer = VisualTreeHelper.GetChild(elem, 0) as ScrollViewer;
         }
 
     }

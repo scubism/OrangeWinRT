@@ -8,8 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:orangeControls="using:OrangeWinRT.Controls"
     mc:Ignorable="d">
+    
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid Margin="100,100,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid Margin="50,100,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
 
             <ScrollViewer x:Name="HorizontalPrevNextScrollViewer"
                                 Width="175" 
@@ -37,7 +38,7 @@
             </orangeControls:ScrollIndicator>
         </Grid>
 
-        <Grid Margin="200,180,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid Margin="50,180,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
             <ScrollViewer x:Name="VerticalPrevNextScrollViewer"
                             Height="75" 
                             VerticalScrollBarVisibility="Auto" 
@@ -62,35 +63,94 @@
                 </orangeControls:ScrollIndicator.Template>
             </orangeControls:ScrollIndicator>
         </Grid>
-        
-        <GridView x:Name="GrieView1"
+        <Grid Margin="400,100,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ListView x:Name="ListView1" Width="300" Height="80"
+                      ItemsSource="{Binding}"
+                      ItemTemplate="{StaticResource Standard80ItemTemplate}"
+                      HorizontalAlignment="Left" VerticalAlignment="Top"
+                      ScrollViewer.HorizontalScrollMode="Enabled"      
+        		      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+        		      ScrollViewer.VerticalScrollMode="Disabled"
+        		      SelectionMode="None" Loaded="ListView1_Loaded">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
+            <orangeControls:ScrollIndicator x:Name="ListView1ScrollIndicator">
+                <orangeControls:ScrollIndicator.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Button x:Name="PrevButton" Content="prev" Margin="0,120,0,0"/>
+                            <Button x:Name="NextButton" Content="next" Margin="100,120,0,0"/>
+                            <Slider x:Name="Slider" Margin="0,40,0,0" Width="216" Maximum="100" Height="38"/>
+                        </Grid>
+                    </ControlTemplate>
+                </orangeControls:ScrollIndicator.Template>
+            </orangeControls:ScrollIndicator>
+            <TextBlock Margin="200,120,0,0" FontSize="20">
+            	<Run Text="{Binding Path=PageIndex, ElementName=ListView1ScrollIndicator, Mode=OneWay}"/>
+            	<Run Text=" / "/>
+            	<Run Text="{Binding Path=NumPages, ElementName=ListView1ScrollIndicator, Mode=OneWay}"/>
+            </TextBlock>
+        </Grid>
+
+        <Grid Margin="400,300,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+            <ListView x:Name="ListView2" Width="300" Height="180"
+                      HorizontalAlignment="Left" VerticalAlignment="Top"
+                      ItemsSource="{Binding}"
+                      ItemTemplate="{StaticResource Standard80ItemTemplate}"
+                      ScrollViewer.VerticalScrollMode="Enabled"      
+        		      ScrollViewer.VerticalScrollBarVisibility="Auto"
+        		      ScrollViewer.HorizontalScrollMode="Disabled"
+        		      SelectionMode="None" Loaded="ListView2_Loaded">
+            </ListView>
+            <orangeControls:ScrollIndicator x:Name="ListView2ScrollIndicator">
+                <orangeControls:ScrollIndicator.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Slider x:Name="Slider" 
+                                    Margin="300,0,0,0" Width="50" Maximum="100" Height="180"
+                                    Orientation="Vertical" IsDirectionReversed="True"/>
+                        </Grid>
+                    </ControlTemplate>
+                </orangeControls:ScrollIndicator.Template>
+            </orangeControls:ScrollIndicator>
+        </Grid>
+        <Grid Margin="750,100,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+            <GridView x:Name="GrieView1"
                   ItemsSource="{Binding}"
                   ItemTemplate="{StaticResource Standard80ItemTemplate}"
                   SelectionMode="None"
-                  HorizontalAlignment="Left" Margin="645,100,0,0"
-                  VerticalAlignment="Top" Width="300" Height="300">
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <VirtualizingStackPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
-            <GridView.GroupStyle>
-                <GroupStyle>
-                    <GroupStyle.HeaderTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <TextBlock Text="{Binding Title}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </GroupStyle.HeaderTemplate>
-                    <GroupStyle.Panel>
-                        <ItemsPanelTemplate>
-                            <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0"/>
-                        </ItemsPanelTemplate>
-                    </GroupStyle.Panel>
-                 </GroupStyle>
-            </GridView.GroupStyle>
-        </GridView>
-
+                  HorizontalAlignment="Left" 
+                  VerticalAlignment="Top" Width="300" Height="300" Loaded="GrieView1_Loaded">
+                <GridView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Title}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                        <GroupStyle.Panel>
+                            <ItemsPanelTemplate>
+                                <VariableSizedWrapGrid Orientation="Vertical" Margin="0,0,80,0"/>
+                            </ItemsPanelTemplate>
+                        </GroupStyle.Panel>
+                    </GroupStyle>
+                </GridView.GroupStyle>
+            </GridView>
+            <orangeControls:ScrollIndicator x:Name="GridView1ScrollIndicator">
+                <orangeControls:ScrollIndicator.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Slider x:Name="Slider" Margin="0,300,0,0" Width="216" Maximum="100" Height="38"/>
+                        </Grid>
+                    </ControlTemplate>
+                </orangeControls:ScrollIndicator.Template>
+            </orangeControls:ScrollIndicator>
+        </Grid>
     </Grid>
 </Page>
