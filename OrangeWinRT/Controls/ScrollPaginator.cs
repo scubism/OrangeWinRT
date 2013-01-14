@@ -39,7 +39,7 @@ namespace OrangeWinRT.Controls
 
         protected override void OnApplyTemplate()
         {
-            this._prevButton = GetTemplateChild("PrevButton") as Button;
+            this._prevButton = GetTemplateChild(PREV_BUTTON_PARTNAME) as Button;
 
             if (this._prevButton != null)
             {
@@ -53,7 +53,7 @@ namespace OrangeWinRT.Controls
                 };
             }
 
-            this._nextButton = GetTemplateChild("NextButton") as Button;
+            this._nextButton = GetTemplateChild(NEXT_BUTTON_PARTNAME) as Button;
             if (this._nextButton != null)
             {
                 this._nextButton.Click += (_s, _e) =>
@@ -67,7 +67,7 @@ namespace OrangeWinRT.Controls
                 };
             }
 
-            this._slider = GetTemplateChild("Slider") as Slider;
+            this._slider = GetTemplateChild(SLIDER_PARTNAME) as Slider;
             if (this._slider != null)
             {
                 this._slider.ValueChanged += (_s, _e) =>
@@ -126,9 +126,7 @@ namespace OrangeWinRT.Controls
         }
 
         public static readonly DependencyProperty NumPagesProperty = DependencyProperty.Register("NumPages",
-            typeof(int),
-            typeof(ScrollPaginator),
-            new PropertyMetadata(null, null));
+            typeof(int), typeof(ScrollPaginator), null);
         #endregion
 
         #region PageIndex
@@ -139,9 +137,7 @@ namespace OrangeWinRT.Controls
         }
 
         public static readonly DependencyProperty PageIndexProperty = DependencyProperty.Register("PageIndex",
-            typeof(int),
-            typeof(ScrollPaginator),
-            new PropertyMetadata(null, null));
+            typeof(int), typeof(ScrollPaginator), null);
         #endregion
 
         private double _lastExtentSize;
