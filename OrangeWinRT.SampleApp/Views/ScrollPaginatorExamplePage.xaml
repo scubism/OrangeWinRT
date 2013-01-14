@@ -10,7 +10,7 @@
     mc:Ignorable="d">
     
     <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
-        <Grid Margin="50,100,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid Margin="50,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
 
             <ScrollViewer x:Name="HorizontalPrevNextScrollViewer"
                                 Width="175" 

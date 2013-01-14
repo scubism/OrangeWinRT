@@ -53,5 +53,10 @@ namespace OrangeWinRT.SampleApp.Views
         {
             NavFrame.Navigate(typeof(ScrollPaginatorExamplePage));
         }
+
+        private void BreadcrumbsButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavFrame.Navigate(typeof(BreadcrumbsExamplePage));
+        }
     }
 }

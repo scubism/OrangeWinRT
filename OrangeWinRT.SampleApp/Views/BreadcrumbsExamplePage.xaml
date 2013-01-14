@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="OrangeWinRT.SampleApp.Views.BreadcrumbsExamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OrangeWinRT.SampleApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:orangeControls="using:OrangeWinRT.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <orangeControls:Breadcrumbs x:Name="Breadcrumbs1" 
+                                        Height="50" 
+        		                        MaxWidth="475" 
+                                        BreadcrumbsSource="{Binding}"
+                >
+                <orangeControls:Breadcrumbs.Template>
+                    <ControlTemplate>
+                        <ItemsControl x:Name="ItemsControl" Margin="5,0,5,0">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ControlTemplate>
+                </orangeControls:Breadcrumbs.Template>
+
+                <orangeControls:Breadcrumbs.BreadcrumbTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding}" VerticalAlignment="Center"
+                                Click="Button_Click_1"/>
+                    </DataTemplate>
+                </orangeControls:Breadcrumbs.BreadcrumbTemplate>
+                <orangeControls:Breadcrumbs.TerminalBreadcrumbTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontSize="16"
+                                   Margin="5,5,5,0" VerticalAlignment="Center"/>
+                    </DataTemplate>
+                </orangeControls:Breadcrumbs.TerminalBreadcrumbTemplate>
+                <orangeControls:Breadcrumbs.SeparatorTemplate>
+                    <DataTemplate>
+                        <TextBlock Text=">>" Margin="5,5,5,0" VerticalAlignment="Center"/>
+                    </DataTemplate>
+                </orangeControls:Breadcrumbs.SeparatorTemplate>
+            </orangeControls:Breadcrumbs>
+        </Grid>
+    </Grid>
+</Page>
