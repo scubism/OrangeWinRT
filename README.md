@@ -7,7 +7,7 @@ OrangeWinRT is a collection of C#/XAML modules for WinRT/Windows Store Applicati
 
 ### ScrollPaginator
 
-A set of pagination controls for ScrollViewer, such as prev/next buttons and slider.
+A set of pagination controls for ScrollViewer, such as prev/next buttons and sliders.
 
 ![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/ScrollPaginatorExample1.png)
 
@@ -19,9 +19,23 @@ A breadcrumbs control with buttons and separators.
 
 ### ImageButton
 
-A custom button with background image.
+A custom button with a background image.
 
 ![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/ImageButtonExample1.png)
+
+## How to use
+
+### Sample app
+
+* Open OrangeWinRT.sln
+* Enable package restore from solution explorer (
+http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)
+* Open tools > library package manager > package manager console. If a restore button was appeared, then click it.
+* Set OrangeWinRT.SampleApp as a start up project.
+
+### Package
+
+* Include the OrangeWinRT folder (which could be a git submodule) as a project in your solution, and restore dependent packages as above; Currently we do not publish it in the nuget gallery..
 
 ## Licence
 
