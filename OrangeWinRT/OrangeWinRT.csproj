@@ -100,6 +100,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controls\Breadcrumbs.cs" />
+    <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ScrollPaginator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -114,7 +115,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Themes\Generic.xml" />
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

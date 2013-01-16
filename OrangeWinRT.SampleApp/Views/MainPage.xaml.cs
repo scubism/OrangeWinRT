@@ -39,5 +39,10 @@ namespace OrangeWinRT.SampleApp.Views
         {
             NavFrame.Navigate(typeof(BreadcrumbsExamplePage));
         }
+
+        private void ImageButtonButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavFrame.Navigate(typeof(ImageButtonExamplePage));
+        }
     }
 }

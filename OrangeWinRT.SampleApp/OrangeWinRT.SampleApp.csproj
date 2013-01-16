@@ -114,6 +114,9 @@
     <Compile Include="Views\BreadcrumbsExamplePage.xaml.cs">
       <DependentUpon>BreadcrumbsExamplePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ImageButtonExamplePage.xaml.cs">
+      <DependentUpon>ImageButtonExamplePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -129,11 +132,20 @@
     <None Include="OrangeWinRT.SampleApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\GrayButton.png" />
     <Content Include="Assets\Logo.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
-    <Content Include="Theme\Generic.xml" />
+    <Content Include="Assets\VoiceButton.png" />
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ImageButtonExamplePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

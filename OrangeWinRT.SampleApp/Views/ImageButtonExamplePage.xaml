@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="OrangeWinRT.SampleApp.Views.ImageButtonExamplePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:OrangeWinRT.SampleApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:orangeControls="using:OrangeWinRT.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid Margin="50,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <orangeControls:ImageButton Width="190" Height="40" 
+                Text="Button1"
+                ImageSource="/Assets/GrayButton.png"
+                Foreground="#FFFF0000" FontSize="22" Click="ImageButton_Click_1"/>
+        </Grid>
+        <Grid Margin="260,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <orangeControls:ImageButton Width="33" Height="32" 
+                ImageSource="/Assets/VoiceButton.png" Click="ImageButton_Click_2"/>
+        </Grid>
+    </Grid>
+</Page>

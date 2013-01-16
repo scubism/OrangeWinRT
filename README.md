@@ -17,6 +17,12 @@ A breadcrumbs control with buttons and separators.
 
 ![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/BreadcrumbsExample1.png)
 
+### ImageButton
+
+A custom button with background image.
+
+![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/ImageButtonExample1.png)
+
 ## Licence
 
 ![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/Logo.png)

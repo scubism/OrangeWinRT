@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:OrangeWinRT.SampleApp"
-    xmlns:localData="using:OrangeWinRT.SampleApp.Data">
+    xmlns:orangeControls="using:OrangeWinRT.Controls">
 
     <Application.Resources>
         <ResourceDictionary>

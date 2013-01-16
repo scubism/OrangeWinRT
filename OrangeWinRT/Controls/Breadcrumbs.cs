@@ -85,12 +85,10 @@ namespace OrangeWinRT.Controls
         public static readonly DependencyProperty BreadcrumbsSourceProperty = DependencyProperty.Register("BreadcrumbsSource",
             typeof(object),
             typeof(Breadcrumbs),
-            new PropertyMetadata(null, OnBreadcrumbsSourcePropertyChanged));
-
-        private static void OnBreadcrumbsSourcePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ((Breadcrumbs)d)._populateItems();
-        }
+            new PropertyMetadata(null, (depobj, args) =>
+                {
+                    ((Breadcrumbs)depobj)._populateItems();
+                }));
         #endregion
 
         #region BreadcrumbTemplate

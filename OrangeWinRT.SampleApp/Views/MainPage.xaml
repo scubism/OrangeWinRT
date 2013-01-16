@@ -49,6 +49,7 @@
             <StackPanel Background="{StaticResource ApplicationPageBackgroundThemeBrush}" Canvas.ZIndex="2" Margin="20,0,0,0">
                 <Button x:Name="ScrollPaginatorButton" Click="ScrollPaginatorButton_Click_1">Scroll Paginator</Button>
                 <Button x:Name="BreadcrumbsButton" Click="BreadcrumbsButton_Click" >Breadcrumbs</Button>
+                <Button x:Name="ImageButtonButton" Click="ImageButtonButton_Click" >Image Button</Button>
             </StackPanel>
 
             <Frame x:Name="NavFrame" Grid.Column="1" />
