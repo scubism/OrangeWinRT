@@ -13,7 +13,7 @@
             <orangeControls:ImageButton Width="190" Height="40" 
                 Text="Button1"
                 ImageSource="/Assets/GrayButton.png"
-                Foreground="#FFFF0000" FontSize="22" Click="ImageButton_Click_1"/>
+                Foreground="#FF000000" FontSize="22" Click="ImageButton_Click_1"/>
         </Grid>
         <Grid Margin="260,105,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
             <orangeControls:ImageButton Width="33" Height="32" 
