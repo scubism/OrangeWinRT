@@ -1,7 +1,7 @@
 OrangeWinRT
 ===========
 
-OrangeWinRT is a collection of C#/XAML modules for WinRT/Windows Store Applications.
+OrangeWinRT is a utility C#/XAML library for WinRT/Windows Store Applications.
 
 ## Custom Controls
 
