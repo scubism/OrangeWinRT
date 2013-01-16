@@ -3,6 +3,20 @@ OrangeWinRT
 
 OrangeWinRT is a collection of C#/XAML modules for WinRT/Windows Store Applications.
 
+## Custom Controls
+
+### ScrollPaginator
+
+A set of paginator controls for ScrollViewer, such as prev/next buttons and paginate slider.
+
+![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/ScrollPaginatorExample1.png)
+
+### Breadcrumbs
+
+A breadcrumbs control with buttons and separators.
+
+![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/BreadcrumbsExample1.png)
+
 ## Licence
 
 (The MIT License)
