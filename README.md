@@ -19,6 +19,8 @@ A breadcrumbs control with buttons and separators.
 
 ## Licence
 
+![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/Logo.png)
+
 (The MIT License)
 
 Copyright (c) 2013 S-cubism Inc.
