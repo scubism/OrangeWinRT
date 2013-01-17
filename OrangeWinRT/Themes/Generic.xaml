@@ -7,6 +7,8 @@
   <Style TargetType="orangeControls:ImageButton">
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Center"/>
+    <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+    <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="orangeControls:ImageButton">
