@@ -27,15 +27,12 @@ A custom button with a background image.
 
 ### Sample app
 
-* Open OrangeWinRT.sln
-* Enable package restore from solution explorer (
-http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)
-* Open tools > library package manager > package manager console. If a restore button was appeared, then click it.
-* Set OrangeWinRT.SampleApp as a start up project.
+* Open OrangeWinRT.sln with Visual Studio 2012 or later.
+* Set OrangeWinRT.SampleApp as a startup project.
 
 ### Package
 
-* Include the OrangeWinRT folder as a project in your solution, and restore dependent packages as above; Currently we do not publish it in the nuget gallery..
+* Include the OrangeWinRT folder as a project in your solution; Currently we do not publish it in the nuget gallery.
 
 ## Licence
 
