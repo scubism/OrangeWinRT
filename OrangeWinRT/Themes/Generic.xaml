@@ -33,7 +33,10 @@
                 <VisualState x:Name="PointerFocused" />
               </VisualStateGroup>
             </VisualStateManager.VisualStateGroups>
-            <Border x:Name="Border">
+            <Border x:Name="Border" 
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
               <ContentPresenter x:Name="ContentPresenter"
                 Content="{TemplateBinding Content}"
                 ContentTransitions="{TemplateBinding ContentTransitions}"

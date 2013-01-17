@@ -39,13 +39,19 @@ namespace OrangeWinRT.SampleApp.Views
 
         private async void ImageButton_Click_1(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Button1 pressed");
+            var dialog = new MessageDialog("Button1 clicked");
             await dialog.ShowAsync();
         }
 
         private async void ImageButton_Click_2(object sender, RoutedEventArgs e)
         {
-            var dialog = new MessageDialog("Voice button pressed");
+            var dialog = new MessageDialog("Voice button clicked");
+            await dialog.ShowAsync();
+        }
+
+        private async void ImageButton_Click_3(object sender, RoutedEventArgs e)
+        {
+            var dialog = new MessageDialog("Right arrow icon clicked");
             await dialog.ShowAsync();
         }
     }

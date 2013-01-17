@@ -134,6 +134,7 @@
   <ItemGroup>
     <Content Include="Assets\GrayButton.png" />
     <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\RightArrowIcon.png" />
     <Content Include="Assets\SmallLogo.png" />
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />

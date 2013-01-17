@@ -64,5 +64,35 @@ namespace OrangeWinRT.Controls
                     ((ImageButton)depobj)._image.Source = (ImageSource)args.NewValue;
                 }));
         #endregion
+
+        #region ImageWidth
+        public double ImageWidth
+        {
+            get { return (double)GetValue(ImageWidthProperty); }
+            set { SetValue(ImageWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty ImageWidthProperty = DependencyProperty.Register("ImageWidth",
+            typeof(double), typeof(ImageButton), 
+            new PropertyMetadata(null, (depobj, args) =>
+                {
+                    ((ImageButton)depobj)._image.Width = (double)args.NewValue;
+                }));
+        #endregion
+
+        #region ImageHeight
+        public double ImageHeight
+        {
+            get { return (double)GetValue(ImageHeightProperty); }
+            set { SetValue(ImageHeightProperty, value); }
+        }
+
+        public static readonly DependencyProperty ImageHeightProperty = DependencyProperty.Register("ImageHeight",
+            typeof(double), typeof(ImageButton), 
+            new PropertyMetadata(null, (depobj, args) =>
+                {
+                    ((ImageButton)depobj)._image.Height = (double)args.NewValue;
+                }));
+        #endregion
     }
 }
