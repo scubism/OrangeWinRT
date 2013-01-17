@@ -5,6 +5,8 @@
     
   <!--Image Button with simple pressed state -->
   <Style TargetType="orangeControls:ImageButton">
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="orangeControls:ImageButton">
