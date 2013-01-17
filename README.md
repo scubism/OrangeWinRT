@@ -35,7 +35,7 @@ http://docs.nuget.org/docs/workflows/using-nuget-without-committing-packages)
 
 ### Package
 
-* Include the OrangeWinRT folder (which could be a git submodule) as a project in your solution, and restore dependent packages as above; Currently we do not publish it in the nuget gallery..
+* Include the OrangeWinRT folder as a project in your solution, and restore dependent packages as above; Currently we do not publish it in the nuget gallery..
 
 ## Licence
 
