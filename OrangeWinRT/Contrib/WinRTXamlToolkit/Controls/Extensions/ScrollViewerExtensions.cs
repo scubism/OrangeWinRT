@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using WinRTXamlToolkit.AwaitableUI;
+using OrangeWinRT.Contrib.WinRTXamlToolkit.AwaitableUI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media.Animation;
 
-namespace WinRTXamlToolkit.Controls.Extensions
+namespace OrangeWinRT.Contrib.WinRTXamlToolkit.Controls.Extensions
 {
     /// <summary>
     /// Extension methods for the ScrollViewer class.

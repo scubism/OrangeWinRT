@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Media.Animation;
 //using System.Windows.Media.Animation;
 //#endif
 
-namespace WinRTXamlToolkit.AwaitableUI
+namespace OrangeWinRT.Contrib.WinRTXamlToolkit.AwaitableUI
 {
     /// <summary>
     /// Contains an extension method for waiting for Storyboard to complete.

@@ -14,7 +14,7 @@ using Windows.UI.Xaml;
 //using System.Windows;
 //#endif
 
-namespace WinRTXamlToolkit.AwaitableUI
+namespace OrangeWinRT.Contrib.WinRTXamlToolkit.AwaitableUI
 {
     /// <summary>
     /// Contains helper methods used to generate Tasks for waiting for event occurrence.

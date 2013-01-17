@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Media;
 
 using Windows.UI.Xaml.Media.Animation;
 
-using WinRTXamlToolkit.Controls.Extensions; // for ScrollViewerExtensions
+using OrangeWinRT.Contrib.WinRTXamlToolkit.Controls.Extensions; // for ScrollViewerExtensions
 
 namespace OrangeWinRT.Controls
 {
