@@ -48,8 +48,15 @@
       </Setter.Value>
     </Setter>
   </Style>
+    
   <Style TargetType="orangeControls:Breadcrumbs">
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Top"/>
   </Style>
+
+  <Style TargetType="orangeControls:ScrollPaginator">
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="VerticalAlignment" Value="Top"/>
+  </Style>
+    
 </ResourceDictionary>
