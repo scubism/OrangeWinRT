@@ -3,7 +3,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:orangeControls="using:OrangeWinRT.Controls">
     
-  <!--Image Button with simple pressed state -->
   <Style TargetType="orangeControls:ImageButton">
     <Setter Property="HorizontalAlignment" Value="Left"/>
     <Setter Property="VerticalAlignment" Value="Center"/>
@@ -48,5 +47,9 @@
         </ControlTemplate>
       </Setter.Value>
     </Setter>
+  </Style>
+  <Style TargetType="orangeControls:Breadcrumbs">
+    <Setter Property="HorizontalAlignment" Value="Left"/>
+    <Setter Property="VerticalAlignment" Value="Top"/>
   </Style>
 </ResourceDictionary>

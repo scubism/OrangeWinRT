@@ -29,6 +29,7 @@ namespace OrangeWinRT.Controls
         {
             this._itemsControl = GetTemplateChild(ITEMS_CONTROL_PARTNAME) as ItemsControl;
             base.OnApplyTemplate();
+            this._populateItems();
         }
 
         private void _populateItems()
