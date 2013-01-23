@@ -50,7 +50,7 @@
                 <Button x:Name="ScrollPaginatorButton" Click="ScrollPaginatorButton_Click_1">Scroll Paginator</Button>
                 <Button x:Name="BreadcrumbsButton" Click="BreadcrumbsButton_Click" >Breadcrumbs</Button>
                 <Button x:Name="ImageButtonButton" Click="ImageButtonButton_Click" >Image Button</Button>
-                <Button x:Name="HeaderButton" Click="HeaderButton_Click" >Header</Button>
+                <Button x:Name="NavigationBarButton" Click="NavigationBarButton_Click" >Navigation Bar</Button>
             </StackPanel>
 
             <Frame x:Name="NavFrame" Grid.Column="1" />

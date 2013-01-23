@@ -13,7 +13,7 @@ namespace OrangeWinRT.Controls
 {
 
     [TemplatePart(Name = BACK_BUTTON_PARTNAME, Type = typeof(Button))]
-    public sealed class Header : Control
+    public sealed class NavigationBar : Control
     {
         #region Template Parts
         private Button _backButton;
@@ -21,9 +21,9 @@ namespace OrangeWinRT.Controls
         const string BACK_BUTTON_PARTNAME = "BackButton";
         #endregion
 
-        public Header()
+        public NavigationBar()
         {
-            this.DefaultStyleKey = typeof(Header);
+            this.DefaultStyleKey = typeof(NavigationBar);
         }
 
         protected override void OnApplyTemplate()
@@ -63,7 +63,7 @@ namespace OrangeWinRT.Controls
         }
 
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text",
-            typeof(string), typeof(Header), null);
+            typeof(string), typeof(NavigationBar), null);
         #endregion
 
 
@@ -75,9 +75,9 @@ namespace OrangeWinRT.Controls
         }
 
         public static readonly DependencyProperty FrameProperty = DependencyProperty.Register("Frame",
-            typeof(Frame), typeof(Header), new PropertyMetadata(null, (depobj, args) =>
+            typeof(Frame), typeof(NavigationBar), new PropertyMetadata(null, (depobj, args) =>
             {
-                ((Header)depobj)._updateBackButton();
+                ((NavigationBar)depobj)._updateBackButton();
             }));
         #endregion
     }

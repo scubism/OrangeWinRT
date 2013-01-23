@@ -23,9 +23,9 @@ A custom button with a background image.
 
 ![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/ImageButtonExample1.png)
 
-### Header
+### NavigationBar
 
-A header control with a back button. If a frame was assigned and could go back, then the back button will appear and navigate the frame on its click.
+A navigation bar control as seen in iOS. If a frame was assigned to the control and the frame could go back, then the back button will appear in the control and navigate the frame on its click.
 
 ## How to use
 

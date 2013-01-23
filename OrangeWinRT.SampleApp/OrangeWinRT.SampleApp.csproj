@@ -114,11 +114,11 @@
     <Compile Include="Views\BreadcrumbsExamplePage.xaml.cs">
       <DependentUpon>BreadcrumbsExamplePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HeaderExamplePage.xaml.cs">
-      <DependentUpon>HeaderExamplePage.xaml</DependentUpon>
+    <Compile Include="Views\NavigationBarExamplePage.xaml.cs">
+      <DependentUpon>NavigationBarExamplePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HeaderExamplePage2.xaml.cs">
-      <DependentUpon>HeaderExamplePage2.xaml</DependentUpon>
+    <Compile Include="Views\NavigationBarExamplePage2.xaml.cs">
+      <DependentUpon>NavigationBarExamplePage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ImageButtonExamplePage.xaml.cs">
       <DependentUpon>ImageButtonExamplePage.xaml</DependentUpon>
@@ -145,11 +145,11 @@
     <Content Include="Assets\SplashScreen.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\VoiceButton.png" />
-    <Page Include="Views\HeaderExamplePage2.xaml">
+    <Page Include="Views\NavigationBarExamplePage2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HeaderExamplePage.xaml">
+    <Page Include="Views\NavigationBarExamplePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

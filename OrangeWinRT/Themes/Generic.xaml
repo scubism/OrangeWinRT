@@ -59,10 +59,10 @@
         <Setter Property="VerticalAlignment" Value="Top"/>
     </Style>
     
-    <Style TargetType="orangeControls:Header" >
+    <Style TargetType="orangeControls:NavigationBar" >
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="orangeControls:Header">
+                <ControlTemplate TargetType="orangeControls:NavigationBar">
                     <Grid>
                         <StackPanel Orientation="Horizontal" Background="DarkGray">
                             <Button x:Name="BackButton" Width="75" Height="35" Content="Back"

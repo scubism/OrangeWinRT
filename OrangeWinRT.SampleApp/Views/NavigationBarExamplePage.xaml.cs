@@ -19,9 +19,9 @@ namespace OrangeWinRT.SampleApp.Views
     /// <summary>
     /// それ自体で使用できる空白ページまたはフレーム内に移動できる空白ページ。
     /// </summary>
-    public sealed partial class HeaderExamplePage : Page
+    public sealed partial class NavigationBarExamplePage : Page
     {
-        public HeaderExamplePage()
+        public NavigationBarExamplePage()
         {
             this.InitializeComponent();
         }
@@ -37,7 +37,7 @@ namespace OrangeWinRT.SampleApp.Views
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(HeaderExamplePage2));
+            this.Frame.Navigate(typeof(NavigationBarExamplePage2));
         }
     }
 }
