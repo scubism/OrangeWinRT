@@ -45,7 +45,7 @@ namespace OrangeWinRT.Controls
             {
                 this._prevButton.Click += (_s, _e) =>
                 {
-                    if (this.ScrollViewer == null) { return; }
+                    if (this._scrollViewer == null) { return; }
                     int newPageIndex = this.PageIndex - 1;
                     if (newPageIndex > 0){
                         this.ScrollToPageIndex(newPageIndex, isAnimation: true);
@@ -58,7 +58,7 @@ namespace OrangeWinRT.Controls
             {
                 this._nextButton.Click += (_s, _e) =>
                 {
-                    if (this.ScrollViewer == null) { return; }
+                    if (this._scrollViewer == null) { return; }
                     int newPageIndex = this.PageIndex + 1;
                     if (newPageIndex <= this.NumPages)
                     {
@@ -85,21 +85,34 @@ namespace OrangeWinRT.Controls
             base.OnApplyTemplate();
         }
 
-        #region ScrollViewer
-        public ScrollViewer ScrollViewer
+        public DependencyObject Scroller
         {
-            get { return (ScrollViewer)GetValue(ScrollViewerProperty); }
-            set { SetValue(ScrollViewerProperty, value); }
+            get { return (ScrollViewer)GetValue(ScrollerProperty); }
+            set { SetValue(ScrollerProperty, value); }
         }
 
-        public static readonly DependencyProperty ScrollViewerProperty =
-            DependencyProperty.Register("ScrollViewer",
-                        typeof(ScrollViewer),
+        public static readonly DependencyProperty ScrollerProperty =
+            DependencyProperty.Register("Scroller",
+                        typeof(DependencyObject),
                         typeof(ScrollPaginator),
                         new PropertyMetadata(null, (depobj, args) =>
                         {
                             ScrollPaginator indicator = (ScrollPaginator)depobj;
-                            ScrollViewer scrollViewer = (ScrollViewer)args.NewValue;
+                            DependencyObject scroller = (DependencyObject)args.NewValue;
+
+                            ScrollViewer scrollViewer = scroller as ScrollViewer;
+                            if (scrollViewer == null)
+                            {
+                                var child = VisualTreeHelper.GetChild(scroller, 0);
+                                scrollViewer = child as ScrollViewer;
+                                if (scrollViewer == null)
+                                {
+                                    scrollViewer = VisualTreeHelper.GetChild(child, 0) as ScrollViewer;
+                                    if (scrollViewer == null) return;
+                                }
+                            }
+                            
+                            indicator._scrollViewer = scrollViewer;
 
                             indicator.resetLayoutMetrics();
 
@@ -116,7 +129,12 @@ namespace OrangeWinRT.Controls
 
                             indicator.OnScrollViewerUpdated();
                         }));
-        #endregion
+
+        private ScrollViewer _scrollViewer;
+        public ScrollViewer ScrollViewer
+        {
+            get { return this._scrollViewer; }
+        }
 
         #region NumPages
         public int NumPages
@@ -158,7 +176,7 @@ namespace OrangeWinRT.Controls
 
         private void _updateLayoutMetrics()
         {
-            if (this.ScrollViewer.HorizontalScrollMode == ScrollMode.Disabled)
+            if (this._scrollViewer.HorizontalScrollMode == ScrollMode.Disabled)
             {
                 this._orientation = Orientation.Vertical;
             }
@@ -171,19 +189,19 @@ namespace OrangeWinRT.Controls
             {
                 if (this._size < 0)
                 {
-                    this._size = this.ScrollViewer.ViewportWidth;
+                    this._size = this._scrollViewer.ViewportWidth;
                 }
-                this._extentSize = this.ScrollViewer.ExtentWidth;
-                this._offset = this.ScrollViewer.HorizontalOffset;
+                this._extentSize = this._scrollViewer.ExtentWidth;
+                this._offset = this._scrollViewer.HorizontalOffset;
             }
             else
             {
                 if (this._size < 0)
                 {
-                    this._size = this.ScrollViewer.ViewportHeight;
+                    this._size = this._scrollViewer.ViewportHeight;
                 }
-                this._extentSize = this.ScrollViewer.ExtentHeight;
-                this._offset = this.ScrollViewer.VerticalOffset;
+                this._extentSize = this._scrollViewer.ExtentHeight;
+                this._offset = this._scrollViewer.VerticalOffset;
             }
 
             if (this._lastOffset < 0)
@@ -271,22 +289,22 @@ namespace OrangeWinRT.Controls
             {
                 if (isAnimation)
                 {
-                    await this.ScrollViewer.ScrollToHorizontalOffsetWithAnimation(newOffset, 0.5);
+                    await this._scrollViewer.ScrollToHorizontalOffsetWithAnimation(newOffset, 0.5);
                 }
                 else
                 {
-                    this.ScrollViewer.ScrollToHorizontalOffset(newOffset);
+                    this._scrollViewer.ScrollToHorizontalOffset(newOffset);
                 }
             }
             else
             {
                 if (isAnimation)
                 {
-                    await this.ScrollViewer.ScrollToVerticalOffsetWithAnimation(newOffset, 0.5);
+                    await this._scrollViewer.ScrollToVerticalOffsetWithAnimation(newOffset, 0.5);
                 }
                 else
                 {
-                    this.ScrollViewer.ScrollToVerticalOffset(newOffset);
+                    this._scrollViewer.ScrollToVerticalOffset(newOffset);
                 }
             }
         }
@@ -295,11 +313,11 @@ namespace OrangeWinRT.Controls
         {
             if (this._orientation == Orientation.Horizontal)
             {
-                await this.ScrollViewer.ScrollToHorizontalOffsetWithAnimation(offset, 0.5);
+                await this._scrollViewer.ScrollToHorizontalOffsetWithAnimation(offset, 0.5);
             }
             else
             {
-                await this.ScrollViewer.ScrollToVerticalOffsetWithAnimation(offset, 0.5);
+                await this._scrollViewer.ScrollToVerticalOffsetWithAnimation(offset, 0.5);
             }
         }
     }

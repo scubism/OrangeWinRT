@@ -26,7 +26,7 @@
                 </StackPanel>
             </ScrollViewer>
             <orangeControls:ScrollPaginator x:Name="HorizontalScrollPaginator"
-                ScrollViewer="{Binding ElementName=HorizontalPrevNextScrollViewer}">
+                Scroller="{Binding ElementName=HorizontalPrevNextScrollViewer}">
                 <orangeControls:ScrollPaginator.Template>
                     <ControlTemplate>
                         <Grid>
@@ -52,7 +52,7 @@
                 </StackPanel>
             </ScrollViewer>
             <orangeControls:ScrollPaginator
-                ScrollViewer="{Binding ElementName=VerticalPrevNextScrollViewer}">
+                Scroller="{Binding ElementName=VerticalPrevNextScrollViewer}">
                 <orangeControls:ScrollPaginator.Template>
                     <ControlTemplate>
                         <Grid>
@@ -71,14 +71,14 @@
                       ScrollViewer.HorizontalScrollMode="Enabled"      
         		      ScrollViewer.HorizontalScrollBarVisibility="Auto"
         		      ScrollViewer.VerticalScrollMode="Disabled"
-        		      SelectionMode="None" Loaded="ListView1_Loaded">
+        		      SelectionMode="None">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Horizontal"/>
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
             </ListView>
-            <orangeControls:ScrollPaginator x:Name="ListView1ScrollPaginator">
+            <orangeControls:ScrollPaginator x:Name="ListView1ScrollPaginator" Scroller="{Binding ElementName=ListView1}">
                 <orangeControls:ScrollPaginator.Template>
                     <ControlTemplate>
                         <Grid>
@@ -104,9 +104,9 @@
                       ScrollViewer.VerticalScrollMode="Enabled"      
         		      ScrollViewer.VerticalScrollBarVisibility="Auto"
         		      ScrollViewer.HorizontalScrollMode="Disabled"
-        		      SelectionMode="None" Loaded="ListView2_Loaded">
+        		      SelectionMode="None">
             </ListView>
-            <orangeControls:ScrollPaginator x:Name="ListView2ScrollPaginator">
+            <orangeControls:ScrollPaginator x:Name="ListView2ScrollPaginator" Scroller="{Binding ElementName=ListView2}">
                 <orangeControls:ScrollPaginator.Template>
                     <ControlTemplate>
                         <Grid>
@@ -119,12 +119,12 @@
             </orangeControls:ScrollPaginator>
         </Grid>
         <Grid Margin="750,100,0,0"  HorizontalAlignment="Left" VerticalAlignment="Top">
-            <GridView x:Name="GrieView1"
+            <GridView x:Name="GridView1"
                   ItemsSource="{Binding}"
                   ItemTemplate="{StaticResource Standard80ItemTemplate}"
                   SelectionMode="None"
                   HorizontalAlignment="Left" 
-                  VerticalAlignment="Top" Width="300" Height="300" Loaded="GrieView1_Loaded">
+                  VerticalAlignment="Top" Width="300" Height="300">
                 <GridView.GroupStyle>
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>
@@ -142,7 +142,7 @@
                     </GroupStyle>
                 </GridView.GroupStyle>
             </GridView>
-            <orangeControls:ScrollPaginator x:Name="GridView1ScrollPaginator">
+            <orangeControls:ScrollPaginator x:Name="GridView1ScrollPaginator" Scroller="{Binding ElementName=GridView1}">
                 <orangeControls:ScrollPaginator.Template>
                     <ControlTemplate>
                         <Grid>
