@@ -44,5 +44,10 @@ namespace OrangeWinRT.SampleApp.Views
         {
             NavFrame.Navigate(typeof(ImageButtonExamplePage));
         }
+
+        private void HeaderButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavFrame.Navigate(typeof(HeaderExamplePage));
+        }
     }
 }

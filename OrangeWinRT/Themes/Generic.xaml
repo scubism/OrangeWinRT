@@ -3,60 +3,77 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:orangeControls="using:OrangeWinRT.Controls">
     
-  <Style TargetType="orangeControls:ImageButton">
-    <Setter Property="HorizontalAlignment" Value="Left"/>
-    <Setter Property="VerticalAlignment" Value="Center"/>
-    <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
-    <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate TargetType="orangeControls:ImageButton">
-          <Grid>
-            <VisualStateManager.VisualStateGroups>
-              <VisualStateGroup x:Name="CommonStates">
-                <VisualState x:Name="Normal" />
-                <VisualState x:Name="PointerOver">
-                </VisualState>
-                <VisualState x:Name="Pressed">
-                  <Storyboard>
-                    <PointerDownThemeAnimation TargetName="Border"/>
-                  </Storyboard>
-                </VisualState>
-                <VisualState x:Name="Disabled">
-                </VisualState>
-              </VisualStateGroup>
-              <VisualStateGroup x:Name="FocusStates">
-                <VisualState x:Name="Focused">
-                </VisualState>
-                <VisualState x:Name="Unfocused" />
-                <VisualState x:Name="PointerFocused" />
-              </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
-            <Border x:Name="Border" 
-                    Background="{TemplateBinding Background}"
-                    BorderBrush="{TemplateBinding BorderBrush}"
-                    BorderThickness="{TemplateBinding BorderThickness}">
-              <ContentPresenter x:Name="ContentPresenter"
-                Content="{TemplateBinding Content}"
-                ContentTransitions="{TemplateBinding ContentTransitions}"
-                ContentTemplate="{TemplateBinding ContentTemplate}"
-                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-            </Border>
-          </Grid>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </Style>
+    <Style TargetType="orangeControls:ImageButton">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}" />
+        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}" />
+        <Setter Property="Template">
+            <Setter.Value>
+            <ControlTemplate TargetType="orangeControls:ImageButton">
+                <Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="PointerOver">
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                        <PointerDownThemeAnimation TargetName="Border"/>
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled">
+                    </VisualState>
+                    </VisualStateGroup>
+                    <VisualStateGroup x:Name="FocusStates">
+                    <VisualState x:Name="Focused">
+                    </VisualState>
+                    <VisualState x:Name="Unfocused" />
+                    <VisualState x:Name="PointerFocused" />
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+                <Border x:Name="Border" 
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                    <ContentPresenter x:Name="ContentPresenter"
+                    Content="{TemplateBinding Content}"
+                    ContentTransitions="{TemplateBinding ContentTransitions}"
+                    ContentTemplate="{TemplateBinding ContentTemplate}"
+                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Border>
+                </Grid>
+            </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     
-  <Style TargetType="orangeControls:Breadcrumbs">
-    <Setter Property="HorizontalAlignment" Value="Left"/>
-    <Setter Property="VerticalAlignment" Value="Top"/>
-  </Style>
+    <Style TargetType="orangeControls:Breadcrumbs">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
 
-  <Style TargetType="orangeControls:ScrollPaginator">
-    <Setter Property="HorizontalAlignment" Value="Left"/>
-    <Setter Property="VerticalAlignment" Value="Top"/>
-  </Style>
+    <Style TargetType="orangeControls:ScrollPaginator">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
     
+    <Style TargetType="orangeControls:Header" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="orangeControls:Header">
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" Background="DarkGray">
+                            <Button x:Name="BackButton" Width="75" Height="35" Content="Back"
+                                    Margin="10,2,0,0" VerticalAlignment="Top"/>
+                            <TextBlock FontSize="18" HorizontalAlignment="Left" Margin="10,14,10,0" 
+                                       TextWrapping="Wrap" Text="{TemplateBinding Text}" VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

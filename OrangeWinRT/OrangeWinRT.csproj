@@ -103,6 +103,7 @@
     <Compile Include="Contrib\WinRTXamlToolkit\AwaitableUI\StoryboardExtensions.cs" />
     <Compile Include="Contrib\WinRTXamlToolkit\Controls\Extensions\ScrollViewerExtensions.cs" />
     <Compile Include="Controls\Breadcrumbs.cs" />
+    <Compile Include="Controls\Header.cs" />
     <Compile Include="Controls\ImageButton.cs" />
     <Compile Include="Controls\ScrollPaginator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
