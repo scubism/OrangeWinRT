@@ -23,6 +23,10 @@ A custom button with a background image.
 
 ![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/ImageButtonExample1.png)
 
+### Header
+
+A header control with a back button. If a frame was assigned and could go back, then the back button will appear and navigate the frame on its click.
+
 ## How to use
 
 ### Sample app
