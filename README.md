@@ -17,15 +17,13 @@ A breadcrumbs control with buttons and separators.
 
 ![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/BreadcrumbsExample1.png)
 
-### ImageButton
-
-A custom button with a background image.
-
-![](https://raw.github.com/scubism/OrangeWinRT/master/docs/images/ImageButtonExample1.png)
-
 ### NavigationBar
 
 A navigation bar control as seen in iOS. If a frame was assigned to the control and the frame could go back, then the back button will appear in the control and navigate the frame on its click.
+
+### ImageButton
+
+An image button with more options.
 
 ## How to use
 
