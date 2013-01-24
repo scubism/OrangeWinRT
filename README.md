@@ -23,7 +23,7 @@ A navigation bar control as seen in iOS. If a frame was assigned to the control 
 
 ### ImageButton
 
-An image button with more options.
+A more convenient button control for image buttons.
 
 ## How to use
 
