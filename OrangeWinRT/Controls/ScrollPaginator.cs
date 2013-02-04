@@ -103,10 +103,12 @@ namespace OrangeWinRT.Controls
                             ScrollViewer scrollViewer = scroller as ScrollViewer;
                             if (scrollViewer == null)
                             {
+                                if (VisualTreeHelper.GetChildrenCount(scroller) == 0) return;
                                 var child = VisualTreeHelper.GetChild(scroller, 0);
                                 scrollViewer = child as ScrollViewer;
                                 if (scrollViewer == null)
                                 {
+                                    if (VisualTreeHelper.GetChildrenCount(scroller) == 0) return;
                                     scrollViewer = VisualTreeHelper.GetChild(child, 0) as ScrollViewer;
                                     if (scrollViewer == null) return;
                                 }
