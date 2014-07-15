@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -34,7 +36,7 @@ namespace OrangeWinRT.Controls
 
         private void _populateItems()
         {
-            var breadcrumbsSource = this.BreadcrumbsSource as IList<object>;
+            var breadcrumbsSource = this.BreadcrumbsSource as IList;
             if (breadcrumbsSource == null ||
                 this._itemsControl == null ||
                 this.BreadcrumbTemplate == null ||
@@ -42,7 +44,7 @@ namespace OrangeWinRT.Controls
             {
                 return;
             }
-            int cnt = breadcrumbsSource.Count();
+            int cnt = breadcrumbsSource.OfType<object>().Count();
             if (cnt == 0)
             {
                 return;
@@ -66,7 +68,7 @@ namespace OrangeWinRT.Controls
             {
                 terminalBreadcrumbElement = this.TerminalBreadcrumbTemplate.LoadContent() as FrameworkElement;
             }
-            else 
+            else
             {
                 terminalBreadcrumbElement = this.BreadcrumbTemplate.LoadContent() as FrameworkElement;
             }
@@ -88,8 +90,24 @@ namespace OrangeWinRT.Controls
             typeof(Breadcrumbs),
             new PropertyMetadata(null, (depobj, args) =>
                 {
-                    ((Breadcrumbs)depobj)._populateItems();
+                    var control = depobj as Breadcrumbs;
+                    control._populateItems();
+
+                    var oldValue = args.OldValue as INotifyCollectionChanged;
+                    if (oldValue != null)
+                    {
+                        oldValue.CollectionChanged -= control.Breadcrumbs_CollectionChanged;
+                    }
+                    var newValue = args.NewValue as INotifyCollectionChanged;
+                    if (newValue != null)
+                    {
+                        newValue.CollectionChanged += control.Breadcrumbs_CollectionChanged;
+                    }
                 }));
+        private void Breadcrumbs_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            _populateItems();
+        }
         #endregion
 
         #region BreadcrumbTemplate
